@@ -1,5 +1,6 @@
 {
   "name": "postcss-active-view-transition-type",
+  "type": "commonjs",
   "version": "0.0.1",
   "description": "PostCSS plugin that rewrites :active-view-transition-type(<type>) pseudo class selectors to :root.<type> selectors. To be used with mayStartViewTransition from @vtbag/utensil-drawer.",
   "keywords": [
@@ -11,7 +12,7 @@
   ],
   "scripts": {
     "unit": "node --test index.test.js",
-    "test": "npm run unit && eslint .",
+    "test": "npm run unit && eslint . && npx publint",
     "build": "eslint .",
     "changeset": "changeset",
     "release": "changeset publish"
@@ -22,12 +23,17 @@
   "engines": {
     "node": ">=18.0.0"
   },
+  "files": [
+    "index.js",
+    "package.json"
+  ],
   "peerDependencies": {
     "postcss": "^8.4.27"
   },
   "devDependencies": {
     "@changesets/cli": "^2.29.5",
     "eslint": "^9.31.0",
-    "postcss": "^8.4.27"
+    "postcss": "^8.4.27",
+    "publint": "^0.3.12"
   }
 }
