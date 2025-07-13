@@ -10,10 +10,10 @@ async function run(input, output, opts = {}) {
   equal(result.warnings().length, 0)
 }
 
-/* Write tests here
+/* Write tests  */
 
 test('does something', async () => {
-  await run('a{ }', 'a{ }', { })
+  await run(':active-view-transition-type(x){ }', ':active-view-transition-type(x){ }', { })
 })
 
-*/
+

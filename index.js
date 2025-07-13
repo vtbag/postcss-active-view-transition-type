@@ -1,9 +1,8 @@
 /**
  * @type {import('postcss').PluginCreator}
  */
-module.exports = (opts = {}) => {
+module.exports = (/*opts = {}*/) => {
   // Work with options here
-
   return {
     postcssPlugin: 'postcss-active-view-transition-type',
     /*
