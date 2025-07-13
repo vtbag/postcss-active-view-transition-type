@@ -1,6 +1,6 @@
 {
   "name": "postcss-active-view-transition-type",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "PostCSS plugin that rewrites :active-view-transition-type(<type>) pseudo class selectors to :root.<type> selectors. To be used with mayStartViewTransition from @vtbag/utensil-drawer.",
   "keywords": [
     "postcss",
