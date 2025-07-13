@@ -2,13 +2,13 @@
   "name": "postcss-active-view-transition-type",
   "version": "0.0.0",
   "description": "PostCSS plugin that rewrites :active-view-transition-type(<type>) pseudo class selectors to :root.<type> selectors. To be used with mayStartViewTransition from @vtbag/utensil-drawer.",
-  "keywords": ["postcss", "css", "postcss-plugin", "postcss-active-view-transition-type"],
+  "keywords": ["postcss", ":active-view-transition-type", "view-transition", "postcss-plugin", ":active-view-transition"],
   "scripts": {
     "unit": "node --test index.test.js",
     "test": "npm run unit && eslint ."
   },
-  "author": "Martin Trapp <94928215+martrapp@users.noreply.github.com>",
-  "license": "MIT",
+  "author": "vtbag",
+  "license": "ISC",
   "repository": "vtbag/postcss-active-view-transition-type",
   "engines": {
     "node": ">=18.0.0"
