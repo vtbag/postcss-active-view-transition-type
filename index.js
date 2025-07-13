@@ -2,29 +2,31 @@
  * @type {import('postcss').PluginCreator}
  */
 module.exports = (/*opts = {}*/) => {
-  // Work with options here
-  return {
-    postcssPlugin: 'postcss-active-view-transition-type',
-    /*
-    Root (root, postcss) {
-      // Transform CSS AST here
-    }
-    */
-
-    /*
-    Declaration (decl, postcss) {
-      // The faster way to find Declaration node
-    }
-    */
-
-    /*
-    Declaration: {
-      color: (decl, postcss) {
-        // The fastest way find Declaration node if you know property name
+  const rewrite = (selector) => {
+    [...selector.matchAll(/:active-view-transition-type\(([^)]*)\)/g)].forEach(
+      ([match,types]) => {
+        selector = selector.replace(
+          match,
+          `:root${
+            types.includes(",")
+              ? `:is(${types
+                  .split(",")
+                  .map((type) => `.${type.trim()}`)
+                  .join(", ")})`
+              : `.${types.trim()}`
+          }`
+        );
       }
-    }
-    */
-  }
-}
+    );
+    return selector;
+  };
+  return {
+    postcssPlugin: "postcss-active-view-transition-type",
+    Rule(rule) {
+      rule.selectors = rule.selectors.map(rewrite);
+    },
+    
+  };
+};
 
-module.exports.postcss = true
+module.exports.postcss = true;
