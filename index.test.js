@@ -13,23 +13,28 @@ async function run(input, output, opts = {}) {
 /* Write tests  */
 
 test('rewrite single type', async () => {
-  await run(':active-view-transition-type(x){ }', ':root.x{ }', { })
+  await run(':active-view-transition-type(x){ }', ':root.vtbag-vtt-x{ }', { })
 })
 test('rewrite two type', async () => {
-  await run(':active-view-transition-type(x, y){ }', ':root:is(.x, .y){ }', { })
+  await run(':active-view-transition-type(x, y){ }', ':root:is(.vtbag-vtt-x, .vtbag-vtt-y){ }', { })
 })
 test('rewrite single type with whitespace', async () => {
-  await run(':active-view-transition-type(  x     ){ }', ':root.x{ }', { })
+  await run(':active-view-transition-type(  x     ){ }', ':root.vtbag-vtt-x{ }', { })
 })
 test('rewrite two type with whitespace', async () => {
-  await run(':active-view-transition-type( x , /* important */ y){ }', ':root:is(.x, .y){ }', { })
+  await run(':active-view-transition-type( x , /* important */ y){ }', ':root:is(.vtbag-vtt-x, .vtbag-vtt-y){ }', { })
 })
 test('complex selector', async () => {
-  await run(':active-view-transition, :active-view-transition-type(root)   ::view-transition { }', ':active-view-transition, :root.root   ::view-transition { }', { })
+  await run(':active-view-transition, :active-view-transition-type(root)   ::view-transition { }', ':root.vtbag-vtt-0, :root.vtbag-vtt-root   ::view-transition { }', { })
 })
 
 test('garbage in, garbage out', async () => {
-  await run(':active-view-transition-type(x, y) :root { }', ':root:is(.x, .y) :root { }', { })
+  await run(':active-view-transition-type(x, y) :root { }', ':root:is(.vtbag-vtt-x, .vtbag-vtt-y) :root { }', { })
+})
+test('rewrite :active-view-transition', async () => {
+  await run(
+    ':active-view-transition-type(x) :active-view-transition :active-view-transition-type(y){ }', 
+    ':root.vtbag-vtt-x :root.vtbag-vtt-0 :root.vtbag-vtt-y{ }', { })
 })
 
 

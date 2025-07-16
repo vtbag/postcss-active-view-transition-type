@@ -4,20 +4,24 @@
 module.exports = (/*opts = {}*/) => {
   const rewrite = (selector) => {
     [...selector.matchAll(/:active-view-transition-type\(([^)]*)\)/g)].forEach(
-      ([match,types]) => {
+      ([match, types]) => {
         selector = selector.replace(
           match,
           `:root${
             types.includes(",")
               ? `:is(${types
                   .split(",")
-                  .map((type) => `.${type.trim()}`)
+                  .map((type) => `.vtbag-vtt-${type.trim()}`)
                   .join(", ")})`
-              : `.${types.trim()}`
+              : `.vtbag-vtt-${types.trim()}`
           }`
         );
       }
     );
+
+    [...selector.matchAll(/:active-view-transition/g)].forEach(([match]) => {
+      selector = selector.replace(match, `:root.vtbag-vtt-0`);
+    });
     return selector;
   };
   return {
@@ -25,7 +29,6 @@ module.exports = (/*opts = {}*/) => {
     Rule(rule) {
       rule.selectors = rule.selectors.map(rewrite);
     },
-    
   };
 };
 
