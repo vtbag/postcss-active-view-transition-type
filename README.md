@@ -14,13 +14,14 @@ The plugin replaces `:active-view-transition-type(x)` pseudo class selectors wit
 
 To automatically insert those CSS classes during same-document view transitions, replace calls to `document.startViewTransition()` with calls to [`mayStartViewTransition()`](https://vtbag.dev/tools/utensil-drawer/#maystartviewtransition) from the Bag's[`utensil-drawer`](https://vtbag.dev/tools/utensil-drawer) and add the [`useTypesPolyfill: "always"`](https://vtbag.dev/tools/utensil-drawer/#usetypespolyfill-always--auto--never) extension.
 
-## Example
+## Examples
+###  postcss.config.cjs
 ```js
 postcss([
 	require('postcss-active-view-transition-type')
 ])
 ```
-
+### :active-view-transition-type()
 ```css
 /* Input example */
 :active-view-transition-type(toggle-view) {
@@ -33,6 +34,24 @@ postcss([
 ```css
 /* Output example */
 :root.vtbag-vtt-toggle-view {
+  #element {
+    view-transition-name: element;
+  }
+}
+```
+### :active-view-transition
+```css
+/* Input example */
+:active-view-transition {
+  #element {
+    view-transition-name: element;
+  }
+}
+```
+
+```css
+/* Output example */
+:root.vtbag-vtt-0 {
   #element {
     view-transition-name: element;
   }
