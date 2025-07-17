@@ -3,9 +3,10 @@
 In combination with [`mayStartViewTransition()`](https://vtbag.dev/tools/utensil-drawer/#maystartviewtransition) from `@vtbag/utensil-drawer`, this [PostCSS](https://github.com/postcss/postcss) plugin provides a polyfill for view transition types as defined by Level 2 of the View Transition API.
 
 ![Build Status](https://github.com/vtbag/postcss-active-view-transition-type/actions/workflows/run-build.yml/badge.svg)
-[![npm version](https://img.shields.io/npm/v/@vtbag/postcss-active-view-transition-type/latest)](https://www.npmjs.com/package/@vtbag/postcss-active-view-transition-type)
-![minzip](https://badgen.net/bundlephobia/minzip/@vtbag/postcss-active-view-transition-type)
-[![NPM Downloads](https://img.shields.io/npm/dw/@vtbag/postcss-active-view-transition-type)](https://www.npmjs.com/package/@vtbag/postcss-active-view-transition-type)
+[![npm version](https://img.shields.io/npm/v/postcss-active-view-transition-type/latest)](
+https://www.npmjs.com/package/postcss-active-view-transition-type)
+![minzip](https://badgen.net/bundlephobia/minzip/postcss-active-view-transition-type)
+[![NPM Downloads](https://img.shields.io/npm/dw/postcss-active-view-transition-type)](https://www.npmjs.com/package/postcss-active-view-transition-type)
 
 This makes it possible to use view transition types with browser versions that support Level 1 of the View Transition API, only.
 
