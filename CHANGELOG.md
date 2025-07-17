@@ -1,5 +1,11 @@
 # postcss-active-view-transition-type
 
+## 0.0.3 - 2025-07-17
+
+### Patch Changes
+
+- 37867b4: Updated badges in README. Does not include any content changes to the code.
+
 ## 0.0.2 - 2025-07-16
 
 ### Patch Changes
