@@ -32,7 +32,7 @@ postcss([
 
 ```css
 /* Output example */
-:root.vtbag-toggle-view {
+:root.vtbag-vtt-toggle-view {
   #element {
     view-transition-name: element;
   }
