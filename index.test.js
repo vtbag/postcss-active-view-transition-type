@@ -53,3 +53,9 @@ test('rewrite nested (add)', async () => {
     ':active-view-transition-type(x) { &:active-view-transition-type(y) { } }', 
     ':active-view-transition-type(x) { &:active-view-transition-type(y) { } } :root.vtbag-vtt-x { &:root.vtbag-vtt-y { } }', { mode: 'append'})
 })
+
+test('no append (add)', async () => {
+  await run(
+    ':passive-view-transition-type(x) { &:passive-view-transition-type(y) { } }', 
+    ':passive-view-transition-type(x) { &:passive-view-transition-type(y) { } }', { mode: 'append'})
+})
