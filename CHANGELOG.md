@@ -1,6 +1,6 @@
 # postcss-active-view-transition-type
 
-## 0.0.4
+## 0.0.4 - 2025-07-20
 
 ### Patch Changes
 
