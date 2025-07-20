@@ -6,6 +6,7 @@
   "keywords": [
     "postcss",
     ":active-view-transition-type",
+    "polyfill",
     "view-transition",
     "postcss-plugin",
     ":active-view-transition"
@@ -25,7 +26,8 @@
   },
   "files": [
     "index.js",
-    "package.json"
+    "package.json",
+    "README.md"
   ],
   "peerDependencies": {
     "postcss": "^8.4.27"

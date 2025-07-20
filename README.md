@@ -14,14 +14,22 @@ The plugin replaces `:active-view-transition-type(x)` pseudo class selectors wit
 
 To automatically insert those CSS classes during same-document view transitions, replace calls to `document.startViewTransition()` with calls to [`mayStartViewTransition()`](https://vtbag.dev/tools/utensil-drawer/#maystartviewtransition) from the Bag's[`utensil-drawer`](https://vtbag.dev/tools/utensil-drawer) and add the [`useTypesPolyfill: "always"`](https://vtbag.dev/tools/utensil-drawer/#usetypespolyfill-always--auto--never) extension.
 
+The plugin can operate in two different modes:
+* **in-place**: This is the default. Directly rewrites the selectors in place.
+* **append**: Keeps the existing rules as is but inserts a copy with rewritten selectors.
+
 ## Examples
-###  postcss.config.cjs
+
+### Rewrite Rules in Place
+To rewrite rules in place call the plugin without parameters or use this options object: `{ mode: 'in-place'}`.
+
+####  postcss.config.cjs
 ```js
 postcss([
 	require('postcss-active-view-transition-type')
 ])
 ```
-### :active-view-transition-type()
+#### :active-view-transition-type()
 ```css
 /* Input example */
 :active-view-transition-type(toggle-view) {
@@ -39,7 +47,7 @@ postcss([
   }
 }
 ```
-### :active-view-transition
+#### :active-view-transition
 ```css
 /* Input example */
 :active-view-transition {
@@ -57,4 +65,61 @@ postcss([
   }
 }
 ```
+
+### Append Rewritten Rules
+To append the rewritten rules to the original stylesheet call the plugin with this options object: `{ mode: 'append' }`.
+
+####  postcss.config.cjs
+```js
+postcss([
+	require('postcss-active-view-transition-type')({ mode:'append' })
+])
+```
+#### :active-view-transition-type()
+```css
+/* Input example */
+:active-view-transition-type(toggle-view) {
+  #element {
+    view-transition-name: element;
+  }
+}
+```
+
+```css
+/* Output example */
+:active-view-transition-type(toggle-view) {
+  #element {
+    view-transition-name: element;
+  }
+}
+:root.vtbag-vtt-toggle-view {
+  #element {
+    view-transition-name: element;
+  }
+}
+```
+#### :active-view-transition
+```css
+/* Input example */
+:active-view-transition {
+  #element {
+    view-transition-name: element;
+  }
+}
+```
+
+```css
+/* Output example */
+:active-view-transition {
+  #element {
+    view-transition-name: element;
+  }
+}
+:root.vtbag-vtt-0 {
+  #element {
+    view-transition-name: element;
+  }
+}
+```
+
 See [PostCSS](https://github.com/postcss/postcss) docs for examples for your environment.
