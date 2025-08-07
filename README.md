@@ -12,7 +12,7 @@ This makes it possible to use view transition types with browser versions that s
 
 The plugin replaces `:active-view-transition-type(x)` pseudo class selectors with `:root.vtbag-vtt-x`, i.e. selectors that check for a CSS class named `vtbag-vtt-x` on the root element. The `vtbag-vtt-` prefix is added to avoid name clashes with regular CSS classes.
 
-To automatically insert those CSS classes during same-document view transitions, replace calls to `document.startViewTransition()` with calls to [`mayStartViewTransition()`](https://vtbag.dev/tools/utensil-drawer/#maystartviewtransition) from the Bag's [`utensil-drawer`](https://vtbag.dev/tools/utensil-drawer) and add the [`useTypesPolyfill: "always"`](https://vtbag.dev/tools/utensil-drawer/#usetypespolyfill-always--auto--never) extension.
+To automatically insert those CSS classes during same-document view transitions, replace calls to `document.startViewTransition()` with calls to [`mayStartViewTransition()`](https://vtbag.dev/tools/utensil-drawer/#maystartviewtransition) from the Bag's [`Utensil Drawer`](https://vtbag.dev/tools/utensil-drawer) and add the [`useTypesPolyfill: "always"`](https://vtbag.dev/tools/utensil-drawer/#usetypespolyfill-always--auto--never) extension.
 
 The plugin can operate in two different modes:
 * **in-place**: This is the default. Directly rewrites the selectors in place.
