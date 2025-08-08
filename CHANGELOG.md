@@ -1,6 +1,6 @@
 # postcss-active-view-transition-type
 
-## 0.0.5
+## 0.0.5 - 2025-08-08
 
 ### Patch Changes
 
@@ -14,7 +14,7 @@
 
 ### Patch Changes
 
-- 8464083: Adds a `mode: 'add'` option that appends the rewritten rules to the existing stylesheet instead of replacing the original rules.
+- 8464083: Adds a `mode: 'append'` option that appends the rewritten rules to the existing stylesheet instead of replacing the original rules.
 
 ## 0.0.3 - 2025-07-17
 
