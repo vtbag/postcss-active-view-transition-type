@@ -1,10 +1,20 @@
 # postcss-active-view-transition-type
 
+## 0.0.5 - 2025-08-08
+
+### Patch Changes
+
+- 44bdd4b: Improves specificity and avoids multiple copies with mode === append
+
+  The `:active-view-transition...` selectors are now rewritten to `:root.where(...)`. This ensures that the rewritten selectors have the same specificity as the original selector.
+
+  When the plugin was repeatedly called with mode === "append" CSS could double each time. Now the plugin ignores stylesheets that already contain a `/*vtbag*/:root:where(` pattern, which is what the plugin emits when called in append mode. This way, plugin results won't be re-transformed when fed back to the plugin.
+
 ## 0.0.4 - 2025-07-20
 
 ### Patch Changes
 
-- 8464083: Adds a `mode: 'add'` option that appends the rewritten rules to the existing stylesheet instead of replacing the original rules.
+- 8464083: Adds a `mode: 'append'` option that appends the rewritten rules to the existing stylesheet instead of replacing the original rules.
 
 ## 0.0.3 - 2025-07-17
 
