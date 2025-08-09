@@ -49,8 +49,8 @@ test('rewrite nested', async () => {
 
 test('rewrite nested (add)', async () => {
   await run(
-    ':active-view-transition-type(x) { &:active-view-transition-type(y) { } }', 
-    ':active-view-transition-type(x) { &:active-view-transition-type(y) { } } /*vtbag*/:root:where(.vtbag-vtt-x) { &/*vtbag*/:root:where(.vtbag-vtt-y) { } }', { mode: 'append'})
+    'foo { } :active-view-transition-type(x) { &:active-view-transition-type(y) { } }', 
+    'foo { } :active-view-transition-type(x) { &:active-view-transition-type(y) { } } /*vtbag*/:root:where(.vtbag-vtt-x) { &/*vtbag*/:root:where(.vtbag-vtt-y) { } }', { mode: 'append'})
 })
 
 test('no append (add)', async () => {

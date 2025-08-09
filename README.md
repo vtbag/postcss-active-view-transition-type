@@ -1,6 +1,10 @@
 # PostCSS active-view-transition-type
 
-In combination with [`mayStartViewTransition()`](https://vtbag.dev/tools/utensil-drawer/#maystartviewtransition) from `@vtbag/utensil-drawer`, this [PostCSS](https://github.com/postcss/postcss) plugin provides a polyfill for view transition types as defined by Level 2 of the View Transition API.
+When used with [`mayStartViewTransition()`](https://vtbag.dev/tools/utensil-drawer/#maystartviewtransition) from `@vtbag/utensil-drawer`, this [PostCSS](https://github.com/postcss/postcss) plugin adds a polyfill for the view transition types defined by Level 2 of the View Transition API, letting you use them even when the browser lacks native support.
+
+
+When used with mayStartViewTransition() from @vtbag/utensil-drawer, this PostCSS plugin adds a polyfill for the view transition types defined in Level 2 of the View Transition API, letting you use them even when the browser lacks native support.
+
 
 ![Build Status](https://github.com/vtbag/postcss-active-view-transition-type/actions/workflows/run-build.yml/badge.svg)
 [![npm version](https://img.shields.io/npm/v/postcss-active-view-transition-type/latest)](
@@ -8,7 +12,9 @@ https://www.npmjs.com/package/postcss-active-view-transition-type)
 ![minzip](https://badgen.net/bundlephobia/minzip/postcss-active-view-transition-type)
 [![NPM Downloads](https://img.shields.io/npm/dw/postcss-active-view-transition-type)](https://www.npmjs.com/package/postcss-active-view-transition-type)
 
-This makes it possible to use view transition types with browser versions that support Level 1 of the View Transition API, only, and do not natively support view transition types.
+This plugin makes it possible to use view transition types with browser versions that support Level 1 of the View Transition API, only, and do not natively support view transition types.
+
+> Latest change: Reduces the number of rules copied when setting mode to append. See the [CHANGELOG](https://github.com/vtbag/postcss-active-view-transition-type/blob/main/CHANGELOG.md).
 
 The plugin replaces `:active-view-transition-type(x)` pseudo class selectors with `:root:where(.vtbag-vtt-x)`, i.e. selectors that check for a CSS class named `vtbag-vtt-x` on the root element. The `vtbag-vtt-` prefix is added to avoid name clashes with regular CSS classes. Starting from version 0.0.5, the `:where()` pseudo class makes sure that the replacement keeps the specificity of the original selector. 
 

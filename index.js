@@ -2,14 +2,11 @@
  * @type {import('postcss').PluginCreator}
  */
 
-const { root } = require("postcss");
-
 // mode: 'in-place' | 'append'
 module.exports = (opts = { mode: "in-place" }) => {
   const { mode = "in-place" } = opts;
 
-  let clone;
-  let somethingToDo = false;
+  let map;
 
   const rewrite = (selector) => {
     [...selector.matchAll(/:active-view-transition-type\(([^)]*)\)/g)].forEach(
@@ -25,7 +22,10 @@ module.exports = (opts = { mode: "in-place" }) => {
     );
 
     [...selector.matchAll(/:active-view-transition/g)].forEach(([match]) => {
-      selector = selector.replace(match, `${mode === "append" ? "/*vtbag*/" : ""}:root:where(.vtbag-vtt-0)`);
+      selector = selector.replace(
+        match,
+        `${mode === "append" ? "/*vtbag*/" : ""}:root:where(.vtbag-vtt-0)`
+      );
     });
     return selector;
   };
@@ -33,17 +33,24 @@ module.exports = (opts = { mode: "in-place" }) => {
   return {
     postcssPlugin: "postcss-active-view-transition-type",
     Once(root) {
-      const text = root.toString();
-      somethingToDo =
-        text.includes(":active-view-transition") &&
-        !text.includes("/*vtbag*/:root:where(.vtbag-vtt-"); /* already rewritten */
-      clone = mode === "append" ? root.clone() : undefined;
+      map = root.toString().includes("/*vtbag*/:root:where(.vtbag-vtt-")
+        ? null
+        : new Map();
     },
     Rule(rule) {
-      if (somethingToDo) rule.selectors = rule.selectors.map(rewrite);
+      if (map) {
+        const parentType = rule.parent.type;
+        if (
+          (parentType === "root" || parentType === "atrule") &&
+          rule.toString().includes(":active-view-transition")
+        )
+          mode === "append" && map.set(rule, rule.clone());
+
+        rule.selectors = rule.selectors.map(rewrite);
+      }
     },
-    OnceExit(root) {
-      clone && somethingToDo && root.first.before(clone);
+    OnceExit() {
+      map?.forEach((clone, rule) => rule.before(clone));
     },
   };
 };
