@@ -1,5 +1,11 @@
 # postcss-active-view-transition-type
 
+## 0.0.6
+
+### Patch Changes
+
+- befbf8d: Reduces the number of rules that get copied when setting mode to "append"
+
 ## 0.0.5 - 2025-08-08
 
 ### Patch Changes
