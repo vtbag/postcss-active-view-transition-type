@@ -44,13 +44,15 @@ module.exports = (opts = { mode: "in-place" }) => {
           (parentType === "root" || parentType === "atrule") &&
           rule.toString().includes(":active-view-transition")
         )
-          mode === "append" && map.set(rule, rule.clone());
+          mode === "append" &&
+            map.set(rule.toString(), { rule, clone: rule.clone() });
 
         rule.selectors = rule.selectors.map(rewrite);
       }
     },
     OnceExit() {
-      map?.forEach((clone, rule) => rule.before(clone));
+      map?.forEach((data) => data.rule.before(data.clone));
+      map = undefined;
     },
   };
 };
