@@ -14,7 +14,7 @@ https://www.npmjs.com/package/postcss-active-view-transition-type)
 
 This plugin makes it possible to use view transition types with browser versions that support Level 1 of the View Transition API, only, and do not natively support view transition types.
 
-> Latest change: Reduces the number of rules copied when setting mode to append. See the [CHANGELOG](https://github.com/vtbag/postcss-active-view-transition-type/blob/main/CHANGELOG.md).
+> Latest changes: Reduces the number of rules copied when setting mode to append. See the [CHANGELOG](https://github.com/vtbag/postcss-active-view-transition-type/blob/main/CHANGELOG.md).
 
 The plugin replaces `:active-view-transition-type(x)` pseudo class selectors with `:root:where(.vtbag-vtt-x)`, i.e. selectors that check for a CSS class named `vtbag-vtt-x` on the root element. The `vtbag-vtt-` prefix is added to avoid name clashes with regular CSS classes. Starting from version 0.0.5, the `:where()` pseudo class makes sure that the replacement keeps the specificity of the original selector. 
 
