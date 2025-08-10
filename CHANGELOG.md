@@ -1,6 +1,6 @@
 # postcss-active-view-transition-type
 
-## 0.0.7
+## 0.0.7 2025-08-10 (James Bond Edition)
 
 ### Patch Changes
 
