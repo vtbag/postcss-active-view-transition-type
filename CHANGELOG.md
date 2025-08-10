@@ -1,5 +1,11 @@
 # postcss-active-view-transition-type
 
+## 0.0.7 2025-08-10 (James Bond Edition)
+
+### Patch Changes
+
+- 39315f8: Does clean up after exit
+
 ## 0.0.6 - 2025-08-09
 
 ### Patch Changes
